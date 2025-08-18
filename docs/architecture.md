@@ -1,4 +1,0 @@
-# Architecture
-
-- Diagrams
-- Task descriptions
