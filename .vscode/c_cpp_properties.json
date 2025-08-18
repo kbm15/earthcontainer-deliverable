@@ -1,0 +1,118 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/include",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/src",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/drivers/CMSIS/Device/ST/STM32L1xx/Include",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/drivers/CMSIS/Include",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos/include",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos/CMSIS_RTOS",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos/portable/GCC/ARM_CM3",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/CMSIS/Include",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/CMSIS/Device/ST/STM32L1xx/Include",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/STM32L1xx_HAL_Driver/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/STM32L1xx_HAL_Driver/Src",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/CMSIS/DSP/Include",
+                "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/cjson",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/Common",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/cs43l22",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/hx8347d",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/ili9320",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/ili9325",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/spfd5408",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/st7735",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/stlm75",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Adafruit_Shield",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Utilities/CPU",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Utilities/Fonts",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Utilities/Log",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Core/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Src",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc",
+                "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/include",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/src",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/drivers/CMSIS/Device/ST/STM32L1xx/Include",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/drivers/CMSIS/Include",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos/include",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos/CMSIS_RTOS",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/freertos/portable/GCC/ARM_CM3",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/CMSIS/Include",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/CMSIS/Device/ST/STM32L1xx/Include",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/STM32L1xx_HAL_Driver/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/STM32L1xx_HAL_Driver/Src",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/CMSIS/DSP/Include",
+                    "C:/Users/KBM15/Documents/earthcontainer-deliverable/lib/cjson",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/Common",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/cs43l22",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/hx8347d",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/ili9320",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/ili9325",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/spfd5408",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/st7735",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Components/stlm75",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Drivers/BSP/Adafruit_Shield",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Utilities/CPU",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Utilities/Fonts",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Utilities/Log",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Core/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/AUDIO/Src",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Src",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc",
+                    "C:/Users/KBM15/.platformio/packages/framework-stm32cubel1/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60118",
+                "STM32L1",
+                "STM32L152xE",
+                "USE_HAL_DRIVER",
+                "STM32L152xE",
+                "USE_HAL_DRIVER",
+                "F_CPU=32000000L",
+                ""
+            ],
+            "compilerPath": "C:/Users/KBM15/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mthumb",
+                "-mcpu=cortex-m3",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
