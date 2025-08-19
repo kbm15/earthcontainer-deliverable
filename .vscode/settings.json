@@ -4,6 +4,10 @@
         "stm32l1xx_hal.h": "c",
         "cmsis_os.h": "c",
         "button.h": "c",
-        "pin_alias.h": "c"
+        "pin_alias.h": "c",
+        "stdlib.h": "c",
+        "led.h": "c",
+        "random_generator.h": "c",
+        "stdint.h": "c"
     }
 }
