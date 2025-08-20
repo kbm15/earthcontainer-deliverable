@@ -21,7 +21,6 @@
 #include "main.h"
 #include "stm32l1xx_it.h"
 /* Private includes ----------------------------------------------------------*/
-#include "button.h"
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
 
@@ -56,6 +55,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN EV */
@@ -175,6 +175,20 @@ void TIM2_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles TIM3 global interrupt.
+  */
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  /* USER CODE END TIM3_IRQn 1 */
+}
+
+/**
   * @brief This function handles EXTI line[15:10] interrupts.
   */
 void EXTI15_10_IRQHandler(void)
@@ -188,11 +202,6 @@ void EXTI15_10_IRQHandler(void)
   /* USER CODE END EXTI15_10_IRQn 1 */
 }
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-    if (GPIO_Pin == GPIO_PIN_13) {
-        uint8_t state = (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET);
-        if (buttonQueueHandle != NULL) {
-            osMessagePut(buttonQueueHandle, state, 0);
-        }
-    }
-}
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */

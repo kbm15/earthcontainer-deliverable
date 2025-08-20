@@ -3,6 +3,7 @@
 
 #include "cmsis_os.h"
 #include <stdint.h>
+#include <stdlib.h>
 
 /* Queue handle to send numbers to LED task */
 extern osMessageQId randomQueueHandle;
