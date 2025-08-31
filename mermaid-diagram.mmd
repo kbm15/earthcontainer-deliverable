@@ -1,0 +1,62 @@
+---
+config:
+  layout: fixed
+---
+flowchart TD
+ subgraph Interrupt["Interrupt"]
+        I1["UartRX Int"]
+        I2["Button Int"]
+  end
+ subgraph s1["Main.c"]
+        A1["Peripheral Init"]
+        A2["Create Queues"]
+        A3["Create Tasks"]
+        Interrupt
+  end
+ subgraph ButtonTask["ButtonTask"]
+        B1["Wait for Button Event"]
+        B2["Send Button State to buttonQueue"]
+  end
+ subgraph RandomTask["RandomTask"]
+        R1["Generate Random Delay"]
+        R2["Send Delay to randomQueue"]
+  end
+ subgraph LedTask["LedTask"]
+        L1["Wait for LED Event"]
+        L2["Send LED State to publisherQueue"]
+  end
+ subgraph PublisherTask["PublisherTask"]
+        P1["Wait for Message from publisherQueue"]
+        P2["Format JSON"]
+        P3["Send JSON to modemTXQueue"]
+  end
+ subgraph ModemTask["ModemTask"]
+        M1["Init: Poll AT"]
+        M2["Config HTTP Node"]
+        M3["Check Registration"]
+        M4["Query Operator"]
+        M5["Ready: Wait for modemTXQueue"]
+        M6["Send HTTP POST"]
+  end
+    A1 --> A2
+    A2 --> A3
+    B1 --> B2
+    B2 --> B1
+    R1 --> R2
+    R2 --> R1
+    L1 --> L2
+    L2 --> L1
+    P1 --> P2
+    P2 --> P3
+    M1 --> M2
+    M2 --> M3
+    M3 --> M4
+    M4 --> M5
+    M5 --> M6
+    M6 --> M5
+    B2 -- publisherQueue --> P1
+    R2 -- publisherQueue --> P1
+    R2 -- randomQueue --> L1
+    L2 -- publisherQueue --> P1
+    P3 -- modemTXQueue --> M5
+    A3 --> B1 & R1 & L1 & P1 & M1

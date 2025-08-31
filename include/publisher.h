@@ -15,8 +15,10 @@
 #define DEVICE_ID "potato1"
 
 extern osMessageQId publisherQueueHandle;
+extern osMessageQId modemTXQueueHandle;
 extern osThreadId publisherTaskHandle;
 extern UART_HandleTypeDef huart2;
+
 
 void StartPublisherTask(void const * argument);
 

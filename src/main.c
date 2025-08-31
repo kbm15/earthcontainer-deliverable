@@ -23,6 +23,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "button.h"
+#include "modem.h"
+#include <string.h>
+#include <stdlib.h>
 
 /* USER CODE END Includes */
 
@@ -51,9 +54,12 @@ osThreadId buttonTaskHandle;
 osThreadId randomTaskHandle;
 osThreadId ledTaskHandle;
 osThreadId publisherTaskHandle;
+osThreadId modemTaskHandle;
 osMessageQId buttonQueueHandle;
 osMessageQId randomQueueHandle;
 osMessageQId publisherQueueHandle;
+osMessageQId modemTXQueueHandle;
+osMessageQId modemRXQueueHandle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -68,6 +74,7 @@ void StartButtonTask(void const * argument);
 void StartRandomTask(void const * argument);
 void StartLedTask(void const * argument);
 void StartPublisherTask(void const * argument);
+void StartModemTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -75,6 +82,7 @@ void StartPublisherTask(void const * argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint8_t rx_buff;
 
 /* USER CODE END 0 */
 
@@ -111,6 +119,9 @@ int main(void)
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim3);
+  HAL_UART_Receive_IT(&huart1, &rx_buff, 1);
+
 
   /* USER CODE END 2 */
 
@@ -136,8 +147,16 @@ int main(void)
   randomQueueHandle = osMessageCreate(osMessageQ(randomQueue), NULL);
 
   /* definition and creation of publisherQueue */
-  osMessageQDef(publisherQueue, 5, uint8_t);
+  osMessageQDef(publisherQueue, 2, uint8_t);
   publisherQueueHandle = osMessageCreate(osMessageQ(publisherQueue), NULL);
+
+  /* definition and creation of modemTXQueue */
+  osMessageQDef(modemTXQueue, 2, void*);
+  modemTXQueueHandle = osMessageCreate(osMessageQ(modemTXQueue), NULL);
+
+  /* definition and creation of modemRXQueue */
+  osMessageQDef(modemRXQueue, 2, void*);
+  modemRXQueueHandle = osMessageCreate(osMessageQ(modemRXQueue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -153,12 +172,16 @@ int main(void)
   randomTaskHandle = osThreadCreate(osThread(randomTask), NULL);
 
   /* definition and creation of ledTask */
-  osThreadDef(ledTask, StartLedTask, osPriorityLow, 0, 128);
+  osThreadDef(ledTask, StartLedTask, osPriorityNormal, 0, 128);
   ledTaskHandle = osThreadCreate(osThread(ledTask), NULL);
 
   /* definition and creation of publisherTask */
-  osThreadDef(publisherTask, StartPublisherTask, osPriorityLow, 0, 512);
+  osThreadDef(publisherTask, StartPublisherTask, osPriorityNormal, 0, 512);
   publisherTaskHandle = osThreadCreate(osThread(publisherTask), NULL);
+
+  /* definition and creation of modemTask */
+  osThreadDef(modemTask, StartModemTask, osPriorityNormal, 0, 512);
+  modemTaskHandle = osThreadCreate(osThread(modemTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -263,7 +286,7 @@ static void MX_TIM3_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM3_Init 2 */
-  HAL_TIM_Base_Start_IT(&htim3);
+  
 
   /* USER CODE END TIM3_Init 2 */
 
@@ -389,7 +412,38 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
   }
 }
 
+
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	static modem_line_t *pending_line = NULL;
+	static uint8_t cmd_index = 0;
+  if (huart->Instance == USART1)
+  {
+    if (pending_line == NULL) {
+      pending_line = (modem_line_t*)malloc(sizeof(modem_line_t));
+      if (pending_line == NULL) {
+        // Allocation failed, handle error
+        cmd_index = 0;
+        HAL_UART_Receive_IT(&huart1, &rx_buff, 1);
+        return;
+      }
+    }
+    pending_line->line[cmd_index++] = rx_buff;
+
+    if (rx_buff == '\r' || cmd_index >= MODEM_LINE_MAX - 1) {
+      pending_line->line[cmd_index] = '\0';
+      osMessagePut(modemRXQueueHandle, (uint32_t)pending_line, 0);
+      pending_line = NULL;
+      cmd_index = 0;
+    }
+    HAL_UART_Receive_IT(&huart1, &rx_buff, 1);
+  }
+}
+
 /* USER CODE END 4 */
+
+
 
 /**
   * @brief  Period elapsed callback in non blocking mode
