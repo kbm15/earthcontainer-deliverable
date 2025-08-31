@@ -151,7 +151,7 @@ int main(void)
   publisherQueueHandle = osMessageCreate(osMessageQ(publisherQueue), NULL);
 
   /* definition and creation of modemTXQueue */
-  osMessageQDef(modemTXQueue, 2, void*);
+  osMessageQDef(modemTXQueue, 1, void*);
   modemTXQueueHandle = osMessageCreate(osMessageQ(modemTXQueue), NULL);
 
   /* definition and creation of modemRXQueue */
@@ -429,11 +429,19 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         return;
       }
     }
-    pending_line->line[cmd_index++] = rx_buff;
+
+    //We work with CR, skip LF
+    if (rx_buff != '\n')
+    {
+    	pending_line->line[cmd_index++] = rx_buff;
+    }
 
     if (rx_buff == '\r' || cmd_index >= MODEM_LINE_MAX - 1) {
-      pending_line->line[cmd_index] = '\0';
-      osMessagePut(modemRXQueueHandle, (uint32_t)pending_line, 0);
+    	// Ignore blank lines
+    	if (cmd_index >= 2){
+		  pending_line->line[cmd_index] = '\0';
+		  osMessagePut(modemRXQueueHandle, (uint32_t)pending_line, 0);
+    	}
       pending_line = NULL;
       cmd_index = 0;
     }
